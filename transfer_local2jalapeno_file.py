@@ -8,7 +8,7 @@ password = 'your password'
 dataDir_local = '/Users/sankalpgarud/Documents/friend_request_data/MRI_data/'
 dataDir_remote = '/vols/Scratch/bnc208/'
 
-file_name = 'preprocessFeat.py'
+file_name = 'transferR  '
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
