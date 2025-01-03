@@ -2,23 +2,23 @@ import paramiko
 import os
 
 hostname = 'jalapeno.fmrib.ox.ac.uk'
-username = 'your username'
-password = 'your password'
+username = 'bnc208'
+password = 'jnZm4a7ZBeyveSnR'
 
 dataDir_local = '/Users/sankalpgarud/Documents/friend_request_data/MRI_data/'
 dataDir_remote = '/vols/Scratch/bnc208/'
 
-file_name = 'transferR  '
+file_name = 'transferReg.py'
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 ssh.connect(hostname=hostname, username=username, password=password)
 print("Logged in to server ;)")
-
 sftp = ssh.open_sftp()
 
 file_path_local = dataDir_local + file_name
+
 file_path_remote = dataDir_remote + file_name
 
 print(f"Local file path: {file_path_local}")

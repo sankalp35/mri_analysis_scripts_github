@@ -6,9 +6,9 @@ from fsl.data.image import Image
 from fsl.data.featanalysis import loadFsf
 from python_script_utils import get_subj_numbers
 
-dataDir = '/vols/Scratch/bnc208/friend_request_task'
+dataDir = '/vols/Scratch/bnc208/friend_request_task/'
 
-designName = 'd6_stage1_fslanat' #mostly used for the fsf file
+designName = 'd8_noITI_ppi_stage1_fslanat' #mostly used for the fsf file
 template_subj_name = 'S02'
 
 #Grab a template
@@ -17,7 +17,7 @@ templatePath = dataDir+'/templateFSF/'+designName+'.fsf'
 subj_number = get_subj_numbers()
 
 for subj in subj_number:
-    subjName = '/S'+str(subj).zfill(2)
+    subjName = 'S'+str(subj).zfill(2)
     subjPath = dataDir+subjName+'/'
 
     #copy stage1 design file to the subject folder
@@ -59,15 +59,15 @@ for subj in subj_number:
 
     os.chdir(subjPath)
 
-    feat_folder = new_output+".feat"
+    first_level_folder = new_output+".feat"
     #Remove previous folder by the same name it already exists
-    if os.path.exists(feat_folder):
-        print(f"Folder {feat_folder} exists.")
+    if os.path.exists(first_level_folder):
+        print(f"Folder {first_level_folder} exists.")
         # delete the folder
-        shutil.rmtree(feat_folder)
-        print(f"Folder {feat_folder} deleted.")
+        shutil.rmtree(first_level_folder)
+        print(f"Folder {first_level_folder} deleted.")
     else:
-        print(f"Folder {feat_folder} does not exist.")
+        print(f"Folder {first_level_folder} does not exist.")
 
-    os.system('FSLSUB_MEMORY_REQUIRED=40G feat '+designName+'.fsf')
+    os.system('fsl_sub -q verylong.q -T 360 -R 30 feat '+designName+'.fsf')
     print('Started first level analysis for subject ' + subjName)

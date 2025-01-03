@@ -38,6 +38,16 @@ def fslFixText(input_txt, output_txt, **kwargs):
     cmd = ['fslFixText', input_txt, output_txt]
     return cmd + applyArgStyle('-=', **kwargs)
 
+def generate_evlist(path2pnm):
+    # Generate list of nifi files
+    nifis = imglob(os.listdir(path2pnm))
+    # Generate the strings to be written to the file
+    lines = [f"{path2pnm}/{item}.nii.gz" for item in nifis]
+    # Write the generated lines to the output file
+    with open(f"{path2pnm}/out_evlist.txt", "w") as file:
+        for line in lines:
+            file.write(line + "\n")
+
 
 # directory of the data
 dataDir = '/vols/Scratch/bnc208/friend_request_task'
@@ -72,3 +82,7 @@ for subj in subj_number:
     # run stage 2
     pnm_evs(func, submit={'jobhold': pnm_jid, 'queue': 'short.q'})
 
+    #simone script
+    pnmevs_jid = pnm_evs(func, submit={'queue': 'short.q'})
+    hold([pnmevs_jid])
+    generate_evlist(pnmPath)

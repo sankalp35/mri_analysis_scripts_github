@@ -109,7 +109,16 @@ lc_mask_miriam = {
     'resolution': '1mm'
 }
 
-all_masks = [drn_mask_hailey, drn_biased_mask, drn_biased_anterior, hypothalamus_mask_daria, anterior_insula_mask_hailey, sn_mask_hailey, vta_mask_hailey, sgACC_mask_sankalp, area9_mask_marco, hb_mask_miriam, drn_fa_mask, lc_mask_miriam]
+
+R_ins_func_mask = {
+    'name': 'R_ins_func_mask',
+    'path': dataDir + '/masks/R_ins_func_mask',
+    'funcs_of_interest': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+    'resolution': '1mm'
+}
+
+
+all_masks = [drn_mask_hailey, drn_biased_mask, drn_biased_anterior, hypothalamus_mask_daria, anterior_insula_mask_hailey, sn_mask_hailey, vta_mask_hailey, sgACC_mask_sankalp, area9_mask_marco, hb_mask_miriam, drn_fa_mask, lc_mask_miriam, R_ins_func_mask]
 
 for mask in all_masks:
     thisMaskInput = input("Work on " + mask['name'] + " (Y=1/N=0): ")

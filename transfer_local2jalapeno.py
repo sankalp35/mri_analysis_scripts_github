@@ -4,12 +4,12 @@ import os
 
 
 hostname = 'jalapeno.fmrib.ox.ac.uk'
-username = 'your username'
-password = 'your password'
+username = 'bnc208'
+password = 'jnZm4a7ZBeyveSnR'
 
 dataDir_local = '/Users/sankalpgarud/Documents/friend_request_data/MRI_data/main_study_data/'
 dataDir = '/vols/Scratch/bnc208/friend_request_task/'
-folder_name = 'd6_ppi_evs'
+folder_name = 'd8_noITI_evs'
 
 # Create an SSH client object
 ssh = paramiko.SSHClient()

@@ -13,11 +13,13 @@ import time
 dataDir = '/vols/Scratch/bnc208/friend_request_task'
 
 # grab the correct fsf
-fsfName = 'preprocess_fslAnat_synthstrip_alterfB_intensityNormalisedFuncStructExpFunc_fullsearch.fsf'
+fsfName = 'preprocess_fslAnat_synthstrip_alterfB_intensityNormalisedFuncStructExpFunc_fullsearch.fsf' #remember to change the output folder name down below
+output_folder_name = '/preprocessed_data_fslAnat_synthstrip_altref_intensityNormalisedStructAndFuncExpFunc_fullsearch'
+
 templatePath = dataDir + '/templateFSF/' + fsfName
 templatefsf_subj = '/S02'
 
-output_folder_name = '/preprocessed_data_fslAnat_synthstrip_altref_intensityNormalisedStructAndFuncExpFunc_fullsearch'
+
 
 subj_number = get_subj_numbers()
 
@@ -86,5 +88,5 @@ for subj in subj_number:
         print("The new feat path is created after deleting the old one")
 
     os.chdir(subjPath)
-    os.system('FSLSUB_MEMORY_REQUIRED=40G feat ' + fsfName)
+    os.system('fsl_sub -q verylong.q -T 360 -R 30 feat ' + fsfName)
     print('Started pre-processing')
